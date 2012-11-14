@@ -147,7 +147,7 @@ namespace SuperMonk
                 // Melee                
                 Cast("Jab", ret => MistweaverSettings.Instance.Jab && StyxWoW.Me.CurrentChi < MistweaverSettings.Instance.JabCount && StyxWoW.Me.CurrentTarget != null && StyxWoW.Me.CurrentTarget.Attackable),
                 Cast("Blackout Kick", ret => MistweaverSettings.Instance.BlackoutKick && StyxWoW.Me.CurrentChi >= 2 && (BuffTimeRemaining("Serpent's Zeal").TotalSeconds <= 5 || !HasBuffStacks("Serpent's Zeal", 2)) && StyxWoW.Me.CurrentTarget != null && StyxWoW.Me.CurrentTarget.Attackable),
-                Cast("Tiger Palm", ret => MistweaverSettings.Instance.TigerPalm && StyxWoW.Me.CurrentChi >= 1 && StyxWoW.Me.CurrentTarget != null && StyxWoW.Me.CurrentTarget.Attackable && BuffTimeRemaining("Tiger Power").TotalSeconds <= 5 || !HasBuffStacks("Tiger Power", MistweaverSettings.Instance.TigerPalmCount))
+                Cast("Tiger Palm", ret => MistweaverSettings.Instance.TigerPalm && StyxWoW.Me.CurrentChi >= 1 && StyxWoW.Me.CurrentTarget != null && StyxWoW.Me.CurrentTarget.Attackable && (BuffTimeRemaining("Tiger Power").TotalSeconds <= 5 || !HasBuffStacks("Tiger Power", MistweaverSettings.Instance.TigerPalmCount)))
             );
         }
 
