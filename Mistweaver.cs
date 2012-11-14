@@ -136,7 +136,7 @@ namespace SuperMonk
                 CastLikeMonk("Spinning Crane Kick", ret => StyxWoW.Me, ret => MistweaverSettings.Instance.SpinningCraneKick && Unit.NearbyGroupMembersDistance(8f).Count(u => u.HealthPercent < MistweaverSettings.Instance.SpinningCraneKickPercent) >= MistweaverSettings.Instance.SpinningCraneKickCount),
                 
                 // Single Target - only if heal list = 1 or cannot jab
-                new Decorator(ret => !MistweaverSettings.Instance.Jab || HealerManager.Instance.HealList.Count() <= 1,
+                new Decorator(ret => !MistweaverSettings.Instance.Jab || HealerManager.Instance.HealList.Count(u => u.HealthPercent < MistweaverSettings.Instance.SoothingMistPercent) <= 1,
                     new PrioritySelector(
                         CastLikeMonk("Soothing Mist", ret => (WoWUnit)ret, ret => ret != null && MistweaverSettings.Instance.SoothingMist && ((WoWUnit)ret).HealthPercent < MistweaverSettings.Instance.SoothingMistPercent && StyxWoW.Me.ChanneledSpell == null),
                         CastLikeMonk("Enveloping Mist", ret => (WoWUnit)ret, ret => ret != null && MistweaverSettings.Instance.EnvelopingMist && ((WoWUnit)ret).HealthPercent < MistweaverSettings.Instance.EnvelopingMistPercent && StyxWoW.Me.CurrentChi >= 3 && !((WoWUnit)ret).HasMyAura("Enveloping Mist")),
